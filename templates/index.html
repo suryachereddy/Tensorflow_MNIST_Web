@@ -3,7 +3,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-      $(function() {  
+        $(function () {
             var canvas = document.querySelector("#canvas");
             var context = canvas.getContext("2d");
             canvas.width = 280;
@@ -20,7 +20,7 @@
             context.fillStyle = "white";
             context.fillRect(0, 0, canvas.width, canvas.height);
             context.color = "black";
-            context.lineWidth = 7;
+            context.lineWidth = 30;
             context.lineJoin = context.lineCap = 'round';
 
             debug();
@@ -66,15 +66,18 @@
 </head>
 
 <body>
-    <h1 style="margin-top: 5%; text-align: center;font-size:200%;">Draw Any Digit from 0-9 and the Neural Network Will
+    <h1 style="margin-top: 5%; text-align: center;font-size:200%;font-weight: bolder;">Draw Any Digit from 0-9 and the Neural Network Will
         (Hopefully) Predict it!</h1>
-    <div style="margin-top:2% ;align-items: center; text-align: center;">
-        <h1 style="font-weight:bolder;color: rgb(65, 19, 8);">Draw below↓</h1>
-        <canvas id="canvas" width="250" height="250" style="border: solid;border-color: brown;cursor: crosshair;"></canvas>
-    </div>
-    <div style="text-align: center;padding: 3%;">
-        <button class="btn btn-success" id="predict">Predict!</button>
-        <button class="btn btn-danger " id="clearButton" >Re-draw</button>
+    <div style="margin-left: 5%; padding: 2%;">
+        <div style="margin-top:2% ;align-items: center;">
+            <h1 style="font-weight:bolder;color: rgb(65, 19, 8);">Draw below↓</h1>
+            <canvas id="canvas" width="250" height="250"
+                style="border: solid;border-color: brown;cursor: crosshair;"></canvas>
+        </div>
+        <div style="padding: 3%;">
+            <button class="btn btn-success" id="predict">Predict!</button>
+            <button class="btn btn-danger " id="clearButton">Re-draw</button>
+        </div>
     </div>
 
 </body>
