@@ -1,5 +1,5 @@
 Flask
-PIL
+Pillow
 numpy
 tensorflow
 cv2
