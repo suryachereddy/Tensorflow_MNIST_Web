@@ -1,0 +1,12 @@
+Flask
+PIL
+numpy
+tensorflow
+cv2
+base64
+sys
+os
+werkzeug
+re
+io
+gunicorn

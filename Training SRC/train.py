@@ -17,7 +17,7 @@ import json
 
 #To import and split the MNIST dataset
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
-class_names=[0,1,2,3,4,5,6,7,8,9]
+
 
 
 #To check the number of dataset available
@@ -111,9 +111,6 @@ x = x.reshape((1,28,28,1))
 print(np.argmax(model.predict(x)))
 print("Probablity distribution:{}".format(model.predict(x)))
 
+model.save('model') 
 
 
-
-with open('model.json', 'w') as outfile:
-    json.dump(model.to_json(), outfile)
-model.save_weights('weights.h5')
