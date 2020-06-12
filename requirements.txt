@@ -1,6 +1,6 @@
 Flask
 Pillow
 numpy
-tensorflow
+tensorflow-cpu
 opencv-python
 gunicorn

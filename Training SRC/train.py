@@ -49,7 +49,7 @@ for j in range(0,10):
     plt.yticks([])
     plt.grid(False)
     plt.imshow(image, cmap=plt.cm.binary)
-    plt.xlabel(class_names[y_train[j]])
+    
     i += 1
 plt.show()
 
