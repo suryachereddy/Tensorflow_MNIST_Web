@@ -3,10 +3,4 @@ Pillow
 numpy
 tensorflow
 opencv-python
-base64
-sys
-os
-werkzeug
-re
-io
 gunicorn
