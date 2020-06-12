@@ -2,7 +2,7 @@ Flask
 Pillow
 numpy
 tensorflow
-cv2
+opencv-python
 base64
 sys
 os
