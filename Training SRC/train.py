@@ -56,29 +56,36 @@ plt.show()
 
 
 #augmentation for preventing overfitting :)
-gen = ImageDataGenerator(rotation_range=8, width_shift_range=0.08, shear_range=0.3,
-                         height_shift_range=0.08, zoom_range=0.08)
+gen = ImageDataGenerator(rotation_range=8, width_shift_range=0.1, shear_range=0.3,
+                         height_shift_range=0.1, zoom_range=0.2)
 
 test_gen = ImageDataGenerator()
 train_generator = gen.flow(X_train, Y_train, batch_size=64)
 test_generator = test_gen.flow(X_test, Y_test, batch_size=64)
 x_batch, y_batch = next(train_generator)
 
-#plot 2 augmented photos
-for i in range (0,2):
+#plot 10 augmented photos
+i = 0
+for i in range (0,10):
     image = x_batch[i].reshape(28,28)
+    plt.subplot(5,5,i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
     plt.imshow(image,cmap=plt.cm.binary)
-    plt.show()
+    i+=i
+plt.show()
+    
 
 model = tf.keras.Sequential([
     tf.keras.layers.Conv2D(32, (3,3), padding='same', activation=tf.nn.relu,
                            input_shape=(28, 28,1)),
     tf.keras.layers.Conv2D(64, (3,3), padding='same', activation=tf.nn.relu),
     tf.keras.layers.MaxPooling2D((2, 2)),
-    tf.keras.layers.Dropout(.25),
+    tf.keras.layers.Dropout(.7),
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(128, activation=tf.nn.relu),
-    tf.keras.layers.Dropout(.25),
+    tf.keras.layers.Dropout(.5),
     tf.keras.layers.Dense(10, activation=tf.nn.softmax)
 ])
 
@@ -89,7 +96,7 @@ model.compile(optimizer='adam',
 
 
 model.fit(train_generator,
-          epochs=3,
+          epochs=10,
           steps_per_epoch=math.ceil(60000/64),
           validation_data=test_generator,
           validation_steps=10000//64)
@@ -100,7 +107,7 @@ model.fit(train_generator,
 
 
 #test with custom files
-x=cv2.imread("test.png",cv2.IMREAD_GRAYSCALE)
+x=cv2.imread("6_4.png",cv2.IMREAD_GRAYSCALE)
 #x=tf.cast(x, tf.float32)
 x = cv2.resize(x, dsize=(28, 28), interpolation=cv2.INTER_CUBIC).astype(float)
 x/=255
